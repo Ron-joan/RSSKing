@@ -1,11 +1,50 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model induction {
+  resource_id Bytes    @db.Binary(64)
+  title       String   @db.VarChar(255)
+  description String   @db.Text
+  createtime  DateTime @db.DateTime(0)
+  url         String   @db.VarChar(255)
+  id          Int      @id @default(autoincrement())
+
+  @@index([resource_id], map: "resource_id")
+}
+
+model resource {
+  resource_id   Bytes  @id @db.Binary(64)
+  resource_type Int    @db.TinyInt
+  resource_path String @db.VarChar(255)
+}
+
+model user {
+  ID       Bytes  @id @db.Binary(64)
+  NickName String @db.VarChar(16)
+
+  @@index([ID], map: "ID")
+}
+
+model user_auth {
+  user_id       Bytes  @db.Binary(64)
+  identity_type Int    @db.TinyInt
+  identifier    String @db.VarChar(255)
+  credential    String @db.VarChar(255)
+  id            Int    @id @default(autoincrement())
+
+  @@index([user_id], map: "user_id")
+}
+
+model user_subscription {
+  user_id     Bytes @db.Binary(64)
+  resource_id Bytes @db.Binary(64)
+  id          Int   @id @default(autoincrement())
+
+  @@index([user_id], map: "user_id")
 }
