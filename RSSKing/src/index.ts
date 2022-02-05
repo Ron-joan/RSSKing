@@ -1,6 +1,8 @@
+import { Console } from "console";
 import * as path from "path";
 import { WsServer } from "tsrpc";
 import { serviceProto } from './shared/protocols/serviceProto';
+import snowFlake from '../utility/SnowFlake'
 
 // Create the Server
 export const server = new WsServer(serviceProto, {
@@ -15,6 +17,11 @@ async function init() {
 
     // TODO
     // Prepare something... (e.g. connect the db)
+
+    setTimeout(function () {
+        let code = snowFlake.getUserSnowFlake();
+        console.log(code);
+    }, 1000)
 };
 
 // Entry function
