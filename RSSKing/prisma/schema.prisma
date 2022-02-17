@@ -7,42 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model induction {
-  resource_id BigInt
+model Induction {
+  resourceID BigInt
   title       String   @db.VarChar(255)
   description String   @db.Text
-  createtime  DateTime @db.DateTime(0)
+  createtime  DateTime @db.DateTime(6)
   url         String   @db.VarChar(255)
   id          Int      @id @default(autoincrement())
 
-  @@index([resource_id], map: "resource_id")
+  @@index([resourceID], map: "resourceID")
 }
 
-model resource {
-  resource_id   BigInt @id
-  resource_type Int    @db.TinyInt
-  resource_path String @db.VarChar(255)
+model Resource {
+  resourceID   BigInt @id
+  resourceType Int    @db.TinyInt
+  resourcePath String @db.VarChar(255)
 }
 
-model user {
+model User {
   ID       BigInt @id
-  NickName String @db.VarChar(16)
+  nickName String @db.VarChar(16)
 }
 
-model user_auth {
-  user_id       BigInt
-  identity_type Int    @db.TinyInt
+model UserAuth {
+  userID       BigInt
+  identityType Int    @db.TinyInt
   identifier    String @db.VarChar(255)
   credential    String @db.VarChar(255)
-  id            Int    @id @default(autoincrement())
+  ID            Int    @id @default(autoincrement())
 
-  @@index([user_id], map: "user_id")
+  @@index([userID], map: "userID")
 }
 
-model user_subscription {
-  user_id     BigInt
-  resource_id BigInt
-  id          Int    @id @default(autoincrement())
+model UserSubscription {
+  userID     BigInt
+  resourceID BigInt
+  ID          Int    @id
 
-  @@index([user_id], map: "user_id")
+  @@index([userID], map: "userID")
 }

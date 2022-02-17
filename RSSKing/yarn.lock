@@ -71,6 +71,13 @@
   "resolved" "https://registry.npmmirror.com/@types/node/-/node-15.14.9.tgz"
   "version" "15.14.9"
 
+"@types/ramda@^0.27.64":
+  "integrity" "sha512-EDf++ss/JoMiDpvT1MuA8oi88OwpvmqVE+o8Ojm5v/5bdJEPZ6eIQd/XYAeQ0imlwG6Tf0Npfq4Z9w3hAKBk9Q=="
+  "resolved" "https://registry.npmjs.org/@types/ramda/-/ramda-0.27.64.tgz"
+  "version" "0.27.64"
+  dependencies:
+    "ts-toolbelt" "^6.15.1"
+
 "@types/ws@^7.4.7":
   "integrity" "sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww=="
   "resolved" "https://registry.npmmirror.com/@types/ws/-/ws-7.4.7.tgz"
@@ -415,6 +422,16 @@
   "integrity" "sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ=="
   "resolved" "https://registry.npmmirror.com/flat/-/flat-5.0.2.tgz"
   "version" "5.0.2"
+
+"fnts@^1.4.0":
+  "integrity" "sha512-9pmzHBdL1sb6LxwvMQvIIaNEnSs6Sl3RDz9fw1RVBXeV7ggiLDpyEBAAuJaFYsdyRN+1JxeT6x3L9AFLvpYqKw=="
+  "resolved" "https://registry.npmjs.org/fnts/-/fnts-1.4.0.tgz"
+  "version" "1.4.0"
+
+"fp-ts@^2.11.8":
+  "integrity" "sha512-WQT6rP6Jt3TxMdQB3IKzvfZKLuldumntgumLhIUhvPrukTHdWNI4JgEHY04Bd0LIOR9IQRpB+7RuxgUU0Vhmcg=="
+  "resolved" "https://registry.npmjs.org/fp-ts/-/fp-ts-2.11.8.tgz"
+  "version" "2.11.8"
 
 "fs-extra@^10.0.0":
   "integrity" "sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ=="
@@ -1081,6 +1098,11 @@
     "make-error" "^1.1.1"
     "yn" "3.1.1"
 
+"ts-toolbelt@^6.15.1":
+  "integrity" "sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A=="
+  "resolved" "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz"
+  "version" "6.15.5"
+
 "tsbuffer-proto-generator@^1.6.0":
   "integrity" "sha512-sjP9Qo8RbBYjkM78yzfoES/mJa3KH+UHPJ2UJ4MYOH0RuCZoYL27Wbtb7So4axLZKi4PoULRuUf8DV1bBjfBEQ=="
   "resolved" "https://registry.npmmirror.com/tsbuffer-proto-generator/-/tsbuffer-proto-generator-1.6.0.tgz"
@@ -1187,7 +1209,7 @@
     "commandpost" "^1.0.0"
     "editorconfig" "^0.15.0"
 
-"typescript@^2.1.6 || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev", "typescript@^4.5.4", "typescript@^4.5.5", "typescript@>=2.7":
+"typescript@^2.1.6 || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev", "typescript@^4.5.4", "typescript@^4.5.5", "typescript@>=2.7", "typescript@>=4.2.2":
   "integrity" "sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA=="
   "resolved" "https://registry.npmmirror.com/typescript/-/typescript-4.5.5.tgz"
   "version" "4.5.5"

@@ -1,18 +1,23 @@
-class SnowFlake {
-    private toBeDistributedIDs: number;
-    private startTime: number;
-    public constructor() { this.startTime = 1644063714710; this.toBeDistributedIDs = 0; }
+import { flow } from 'fp-ts/lib/function';
+import curry from "fnts/curry";
+import { IO } from 'fp-ts/lib/IO';
 
-    public getUserSnowFlake(): bigint {
-        let timestamp = new Date().getTime();
-        let now = BigInt(timestamp);
-        let start = BigInt(this.startTime);
-        let difference = now - start;
-        let ans = difference << BigInt(22);
-        return ans;
-    }
-}
+const now: IO<number> = () => new Date().getTime()
 
-const snowFlake: SnowFlake = new SnowFlake();
+const movesToRight = curry(function (digits: number, x: bigint): bigint {
+    return x << BigInt(digits);
+});
 
-export default snowFlake;
+const subtraction = curry(function (small: bigint, big: bigint): bigint {
+    return big - small;
+})
+
+const addBigInt = curry(function (small: bigint, big: bigint): bigint {
+    return big + small;
+})
+
+export const getNowBigInt = flow(now, BigInt);
+
+const getOneSnowFlakeHead = flow(getNowBigInt, subtraction(BigInt(1644063714710)), movesToRight(22));
+
+export const getOneSnowFlake = flow(BigInt, movesToRight(12), addBigInt(getOneSnowFlakeHead()));
