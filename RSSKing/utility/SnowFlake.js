@@ -3,8 +3,6 @@ exports.__esModule = true;
 exports.getOneSnowFlake = exports.getNowBigInt = void 0;
 var function_1 = require("fp-ts/lib/function");
 var curry_1 = require("fnts/curry");
-var date = new Date();
-var getNow = date.getTime.bind(date);
 var now = function () { return new Date().getTime(); };
 var movesToRight = (0, curry_1["default"])(function (digits, x) {
     return x << BigInt(digits);
