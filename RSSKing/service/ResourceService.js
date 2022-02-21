@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.createResource = void 0;
+exports.getAllResource = exports.createResource = void 0;
 var client_1 = require("@prisma/client");
 var createResource = function (resource) { return function () { return __awaiter(void 0, void 0, void 0, function () {
     var prisma;
@@ -55,3 +55,14 @@ var createResource = function (resource) { return function () { return __awaiter
     });
 }); }; };
 exports.createResource = createResource;
+var getAllResource = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var prisma;
+    return __generator(this, function (_a) {
+        prisma = new client_1.PrismaClient();
+        return [2 /*return*/, prisma.resource.findMany()["finally"](function () {
+                console.log(1);
+                prisma.$disconnect();
+            })];
+    });
+}); };
+exports.getAllResource = getAllResource;

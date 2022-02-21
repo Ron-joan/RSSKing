@@ -27,6 +27,8 @@
     "@prisma/client": "^3.9.1",
     "fnts": "^1.4.0",
     "fp-ts": "^2.11.8",
-    "tsrpc": "^3.1.9"
+    "rsshub": "^1.0.0-master.8b8bd68",
+    "tsrpc": "^3.1.9",
+    "x-ray-scraper": "^3.0.6"
   }
 }

@@ -1,8 +1,9 @@
-import { flow } from 'fp-ts/lib/function';
+import { flow, pipe } from 'fp-ts/lib/function';
 import curry from "fnts/curry";
 import { IO } from 'fp-ts/lib/IO';
+import { number } from 'fp-ts';
 
-const now: IO<number> = () => new Date().getTime()
+const now: IO<number> = () => new Date().getTime();
 
 const movesToRight = curry(function (digits: number, x: bigint): bigint {
     return x << BigInt(digits);
@@ -15,6 +16,10 @@ const subtraction = curry(function (small: bigint, big: bigint): bigint {
 const addBigInt = curry(function (small: bigint, big: bigint): bigint {
     return big + small;
 })
+
+export const getManySnowFlake = (A: any[], type: number): bigint[] => {
+    return A.map((item, index) => pipe(type, getOneSnowFlake, addBigInt(BigInt(index))))
+}
 
 export const getNowBigInt = flow(now, BigInt);
 
