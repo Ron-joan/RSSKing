@@ -1,3 +1,4 @@
+
 import { getNowBigInt, getOneSnowFlake } from '../utility/SnowFlake'
 import { createResource, getAllResource } from "../service/ResourceService"
 import { getRSS } from "../RSS/Spider"
@@ -11,29 +12,17 @@ import { getSomeResourceLastInduction } from "../service/InductionService"
 import * as Console from 'fp-ts/Console'
 const RSSHub = require('rsshub');
 
-const lr = (s: any): IO<void> => () => console.log(s[0]())
-const addAtEnd = (b: string) => (a: string): string => a + b;
-const getHello = () => Promise.resolve('hello');
+const logResource = pipe(
+    getAllResource,
+    map(A.map(getRSS)),
 
-getSomeResourceLastInduction(BigInt(4406258455027712));
+)
 
-// // logHelloAndWorld()
+// getSomeResourceLastInduction(BigInt(4406258455027712)).then((i) => {
+//     console.log(i?.createtime);
+// });
 
-// const logHelloAndWorld = pipe(
-//     getHello,
-//     map(addAtEnd(' world')),
-//     chainIOK(Console.log)
-// )
-
-// const logResource = pipe(
-//     getAllResource,
-//     map(A.map(getRSS)),
-
-// )
-
-// logResource()
-
-console.log(getOneSnowFlake(1));
+logResource()
 // RSSHub.request("/ui-cn/article")
 // .then((data: any) => {
 //     console.log(data);

@@ -8,14 +8,14 @@ datasource db {
 }
 
 model Induction {
-  resourceID BigInt
+  resourceID  BigInt
   title       String   @db.VarChar(255)
-  description String   @db.Text
+  description String   @db.MediumText
   createtime  DateTime @db.DateTime(6)
   url         String   @db.VarChar(255)
   id          Int      @id @default(autoincrement())
 
-  @@index([resourceID], map: "resourceID")
+  @@index([resourceID, createtime], map: "resourceID")
 }
 
 model Resource {
@@ -32,9 +32,9 @@ model User {
 model UserAuth {
   userID       BigInt
   identityType Int    @db.TinyInt
-  identifier    String @db.VarChar(255)
-  credential    String @db.VarChar(255)
-  ID            Int    @id @default(autoincrement())
+  identifier   String @db.VarChar(255)
+  credential   String @db.VarChar(255)
+  ID           Int    @id @default(autoincrement())
 
   @@index([userID], map: "userID")
 }
@@ -42,7 +42,7 @@ model UserAuth {
 model UserSubscription {
   userID     BigInt
   resourceID BigInt
-  ID          Int    @id
+  ID         Int    @id
 
   @@index([userID], map: "userID")
 }

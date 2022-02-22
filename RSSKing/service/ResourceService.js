@@ -60,7 +60,6 @@ var getAllResource = function () { return __awaiter(void 0, void 0, void 0, func
     return __generator(this, function (_a) {
         prisma = new client_1.PrismaClient();
         return [2 /*return*/, prisma.resource.findMany()["finally"](function () {
-                console.log(1);
                 prisma.$disconnect();
             })];
     });

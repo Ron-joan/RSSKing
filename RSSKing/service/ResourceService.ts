@@ -13,7 +13,6 @@ export const createResource = (resource: Resource): Task<void> => async () => {
 export const getAllResource : Task<Resource[]> = async () => {
     const prisma = new PrismaClient();
     return prisma.resource.findMany().finally(()=>{
-        console.log(1)
         prisma.$disconnect();
     });
 }

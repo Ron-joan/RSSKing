@@ -17,8 +17,8 @@ const addBigInt = curry(function (small: bigint, big: bigint): bigint {
     return big + small;
 })
 
-export const getManySnowFlake = (A: any[], type: number): bigint[] => {
-    return A.map((item, index) => pipe(type, getOneSnowFlake, addBigInt(BigInt(index))))
+export const getManySnowFlake = <T>(A: T[], type: number): [T, bigint][] => {
+    return A.map((item, index) => [item, pipe(type, getOneSnowFlake, addBigInt(BigInt(index)))])
 }
 
 export const getNowBigInt = flow(now, BigInt);
