@@ -13,7 +13,7 @@ model Induction {
   description String   @db.MediumText
   createtime  DateTime @db.DateTime(6)
   url         String   @db.VarChar(255)
-  id          Int      @id @default(autoincrement())
+  inductionID BigInt   @id @default(autoincrement())
 
   @@index([resourceID, createtime], map: "resourceID")
 }
@@ -44,5 +44,11 @@ model UserSubscription {
   resourceID BigInt
   ID         Int    @id
 
+  @@index([resourceID], map: "resourceID")
   @@index([userID], map: "userID")
+}
+
+model PushMessage {
+  userID      BigInt  @id
+  inductionID BigInt?
 }

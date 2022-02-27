@@ -15,14 +15,13 @@ const RSSHub = require('rsshub');
 const logResource = pipe(
     getAllResource,
     map(A.map(getRSS)),
-
 )
 
 // getSomeResourceLastInduction(BigInt(4406258455027712)).then((i) => {
 //     console.log(i?.createtime);
 // });
 
-logResource()
+logResource();
 // RSSHub.request("/ui-cn/article")
 // .then((data: any) => {
 //     console.log(data);

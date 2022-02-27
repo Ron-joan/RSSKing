@@ -3,13 +3,24 @@ import { ordering } from 'fp-ts';
 import { flow } from 'fp-ts/lib/function';
 import { IO } from 'fp-ts/lib/IO';
 
-export async function insertInduction(induction: any) {
+export async function insertInduction(induction: Induction) {
     const prisma = new PrismaClient();
     prisma.induction
         .create({
             data: induction
         })
         .finally(() => prisma.$disconnect());
+}
+
+export const insertManyInduction = async (inductions: Induction[]) => {
+    const prisma = new PrismaClient();
+    return prisma.induction
+        .createMany(
+            {
+                data: inductions
+            }
+        )
+        .finally(() => { prisma.$disconnect() })
 }
 
 export async function getSomeResourceLastInduction(resourceID: bigint): Promise<Induction | null> {
