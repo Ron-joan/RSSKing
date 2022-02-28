@@ -42,13 +42,16 @@ model UserAuth {
 model UserSubscription {
   userID     BigInt
   resourceID BigInt
-  ID         Int    @id
+  ID         Int    @id @default(autoincrement())
 
   @@index([resourceID], map: "resourceID")
   @@index([userID], map: "userID")
 }
 
 model PushMessage {
-  userID      BigInt  @id
-  inductionID BigInt?
+  userID      BigInt
+  inductionID BigInt
+  id          Int    @id @default(autoincrement())
+
+  @@index([userID], map: "userID")
 }

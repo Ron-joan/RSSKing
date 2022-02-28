@@ -32,3 +32,10 @@ export const getNowBigInt = flow(now, BigInt);
 const getOneSnowFlakeHead = flow(getNowBigInt, subtraction(BigInt(1644063714710)), movesToRight(22));
 
 export const getOneSnowFlake = flow(BigInt, movesToRight(12), addBigInt(getOneSnowFlakeHead()));
+
+
+export enum SnowFlakeType {
+    User,
+    Resource,
+    Induction,
+}
