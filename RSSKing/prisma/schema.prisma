@@ -9,24 +9,32 @@ datasource db {
 
 model Induction {
   resourceID  BigInt
-  title       String   @db.VarChar(255)
-  description String   @db.MediumText
-  createtime  DateTime @db.DateTime(6)
-  url         String   @db.VarChar(255)
-  inductionID BigInt   @id @default(autoincrement())
+  title       String        @db.VarChar(255)
+  description String        @db.MediumText
+  createtime  DateTime      @db.DateTime(6)
+  url         String        @db.VarChar(255)
+  inductionID BigInt        @id @default(autoincrement())
+  Resource    Resource      @relation(fields: [resourceID], references: [resourceID], onDelete: NoAction, onUpdate: NoAction, map: "Induction_ibfk_1")
+  PushMessage PushMessage[]
 
   @@index([resourceID, createtime], map: "resourceID")
 }
 
 model Resource {
-  resourceID   BigInt @id
-  resourceType Int    @db.TinyInt
-  resourcePath String @db.VarChar(255)
+  resourceID       BigInt             @id
+  resourceType     Int                @db.TinyInt
+  resourcePath     String             @db.VarChar(255)
+  Induction        Induction[]
+  PushMessage      PushMessage[]
+  UserSubscription UserSubscription[]
 }
 
 model User {
-  ID       BigInt @id
-  nickName String @db.VarChar(16)
+  ID               BigInt             @id
+  nickName         String             @db.VarChar(16)
+  PushMessage      PushMessage[]
+  UserAuth         UserAuth[]
+  UserSubscription UserSubscription[]
 }
 
 model UserAuth {
@@ -35,6 +43,7 @@ model UserAuth {
   identifier   String @db.VarChar(255)
   credential   String @db.VarChar(255)
   ID           Int    @id @default(autoincrement())
+  User         User   @relation(fields: [userID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "UserAuth_ibfk_1")
 
   @@index([userID], map: "userID")
 }
@@ -42,7 +51,9 @@ model UserAuth {
 model UserSubscription {
   userID     BigInt
   resourceID BigInt
-  ID         Int    @id @default(autoincrement())
+  ID         Int      @id @default(autoincrement())
+  Resource   Resource @relation(fields: [resourceID], references: [resourceID], onDelete: NoAction, onUpdate: NoAction, map: "UserSubscription_ibfk_2")
+  User       User     @relation(fields: [userID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "UserSubscription_ibfk_1")
 
   @@index([resourceID], map: "resourceID")
   @@index([userID], map: "userID")
@@ -51,7 +62,13 @@ model UserSubscription {
 model PushMessage {
   userID      BigInt
   inductionID BigInt
-  id          Int    @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
+  resourceID  BigInt
+  Induction   Induction @relation(fields: [inductionID], references: [inductionID], onDelete: NoAction, onUpdate: NoAction, map: "PushMessage_ibfk_2")
+  Resource    Resource  @relation(fields: [resourceID], references: [resourceID], onDelete: NoAction, onUpdate: NoAction, map: "PushMessage_ibfk_3")
+  User        User      @relation(fields: [userID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "PushMessage_ibfk_1")
 
-  @@index([userID], map: "userID")
+  @@index([inductionID], map: "inductionID")
+  @@index([resourceID], map: "resourceID")
+  @@index([userID, resourceID], map: "userID")
 }

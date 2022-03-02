@@ -13,7 +13,8 @@ import { insertUserSubscription, insertUserSubscriptionMany } from '../service/u
 import { identityType, insertUserAuth } from '../service/userAuthService'
 import { getSomeResourceLastInduction } from "../service/InductionService"
 import * as Console from 'fp-ts/Console'
-import { insertPushMessageMany } from '../service/pushMessageService';
+import { getUnreadMessage, insertPushMessageMany } from '../service/pushMessageService';
+import { convertMessageWithPathToRSSPackage, groupByResource } from "../service/MessageWithPath";
 const RSSHub = require('rsshub');
 
 const logResource = pipe(
@@ -21,24 +22,17 @@ const logResource = pipe(
     map(A.map(getRSS)),
 )
 
-const a = [
-    {
-        userID: BigInt(7831565035913216),
-        resourceID: BigInt(7570364376813568)
-    },
-    {
-        userID: BigInt(7831565035913216),
-        resourceID: BigInt(7570648536715264)
-    }
-]
-
+pipe(BigInt(7831565035913216), getUnreadMessage)
+.then(data=>{
+    pipe(data,groupByResource,convertMessageWithPathToRSSPackage)
+})
 //insertUserSubscriptionMany(a)
 
 // getSomeResourceLastInduction(BigInt(4406258455027712)).then((i) => {
 //     console.log(i?.createtime);
 // });
 //insertPushMessageMany([{ userID: BigInt(13), inductionID: BigInt(15) }])
-logResource();
+//logResource();
 // RSSHub.request("/ui-cn/article")
 // .then((data: any) => {
 //     console.log(data);

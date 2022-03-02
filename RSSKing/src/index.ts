@@ -1,11 +1,12 @@
 import { Console } from "console";
 import * as path from "path";
-import { WsServer } from "tsrpc";
+import { HttpServer, WsServer } from "tsrpc";
 import { serviceProto } from './shared/protocols/serviceProto';
-import { getNowBigInt, getOneSnowFlake } from '../utility/SnowFlake'
+import { getNowBigInt, getOneSnowFlake } from '../utility/SnowFlake';
+require('../utility/patch.js')
 
 // Create the Server
-export const server = new WsServer(serviceProto, {
+export const server = new HttpServer(serviceProto, {
     port: 3000,
     // Remove this to use binary mode (remove from the client too)
     json: true
@@ -17,7 +18,6 @@ async function init() {
 
     // TODO
     // Prepare something... (e.g. connect the db)
-    console.log(getOneSnowFlake(1));
 };
 
 // Entry function

@@ -57,16 +57,17 @@ function saveInductions(lastInduction: Induction | null, data: Rssml, resource: 
             .then(async () => {
                 const users = await getUserSubscriptionMany(resource.resourceID).catch(e => console.log(e));
                 if (isUserSubscription(users))
-                    pipe(users, map(user => pipe(unreadInduction, map(toPushMessage(user)))), flatten, insertPushMessageMany)
+                    pipe(users, map(user => pipe(unreadInduction, map(toPushMessage(user, resource.resourceID)))), flatten, insertPushMessageMany)
             })
     }
 }
 
-function toPushMessage(user: UserSubscription): (a: Induction) => any {
+function toPushMessage(user: UserSubscription, resourceID: BigInt): (a: Induction) => any {
     return (induction: Induction) => {
         return {
             userID: user.userID,
-            inductionID: induction.inductionID
+            inductionID: induction.inductionID,
+            resourceID
         };
     };
 }
