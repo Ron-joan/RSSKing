@@ -22,17 +22,13 @@ const logResource = pipe(
     map(A.map(getRSS)),
 )
 
-pipe(BigInt(7831565035913216), getUnreadMessage)
-.then(data=>{
-    pipe(data,groupByResource,convertMessageWithPathToRSSPackage)
-})
 //insertUserSubscriptionMany(a)
 
 // getSomeResourceLastInduction(BigInt(4406258455027712)).then((i) => {
 //     console.log(i?.createtime);
 // });
 //insertPushMessageMany([{ userID: BigInt(13), inductionID: BigInt(15) }])
-//logResource();
+logResource();
 // RSSHub.request("/ui-cn/article")
 // .then((data: any) => {
 //     console.log(data);

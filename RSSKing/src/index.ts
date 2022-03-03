@@ -6,7 +6,7 @@ import { getNowBigInt, getOneSnowFlake } from '../utility/SnowFlake';
 require('../utility/patch.js')
 
 // Create the Server
-export const server = new HttpServer(serviceProto, {
+export const server = new WsServer(serviceProto, {
     port: 3000,
     // Remove this to use binary mode (remove from the client too)
     json: true

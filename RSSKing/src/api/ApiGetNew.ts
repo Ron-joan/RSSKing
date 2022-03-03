@@ -9,10 +9,11 @@ import { map } from 'fp-ts/lib/Array';
 
 export async function ApiGetNew(call: ApiCall<ReqGetNew, ResGetNew>) {
     try {
-        const a = BigInt(call.req.userID);
-        pipe(a, getUnreadMessage)
+        pipe(call.req.userID, BigInt, getUnreadMessage)
             .then(data => {
-                pipe(data, groupByResource, convertMessageWithPathToRSSPackage, list => call.succ({ data: list }))
+                const temp = pipe(data, groupByResource, convertMessageWithPathToRSSPackage)
+                pipe(temp, map(item => call.conn.sendMsg("New", { ...item })))
+                pipe(temp, list => call.succ({ data: list }))
             })
     }
     catch {
