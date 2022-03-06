@@ -18,6 +18,7 @@ import { title } from 'process';
 import internal from 'stream';
 import { insertPushMessageMany } from "../service/pushMessageService"
 import { getUserSubscriptionMany } from '../service/userSubscriptionService';
+import { isArray } from '../utility/isArray';
 
 RSSHub.init({
     // config
@@ -56,7 +57,7 @@ function saveInductions(lastInduction: Induction | null, data: Rssml, resource: 
         insertManyInduction(unreadInduction)
             .then(async () => {
                 const users = await getUserSubscriptionMany(resource.resourceID).catch(e => console.log(e));
-                if (isUserSubscription(users))
+                if (isArray(users))
                     pipe(users, map(user => pipe(unreadInduction, map(toPushMessage(user, resource.resourceID)))), flatten, insertPushMessageMany)
             })
     }
@@ -72,9 +73,6 @@ function toPushMessage(user: UserSubscription, resourceID: BigInt): (a: Inductio
     };
 }
 
-function isUserSubscription(pet: void | UserSubscription[]): pet is UserSubscription[] {
-    return (<UserSubscription[]>pet).length !== undefined;
-}
 
 function isHaveDate(item: Item) {
     return item.pubDate === "Invalid Date" || item.pubDate == null;

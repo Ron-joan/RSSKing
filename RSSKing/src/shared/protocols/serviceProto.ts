@@ -2,6 +2,7 @@ import { ServiceProto } from 'tsrpc-proto';
 import { MsgChat } from './MsgChat';
 import { MsgNew } from './MsgNew';
 import { ReqGetNew, ResGetNew } from './PtlGetNew';
+import { ReqMessageMenu, ResMessageMenu } from './PtlMessageMenu';
 import { ReqSend, ResSend } from './PtlSend';
 
 export interface ServiceType {
@@ -9,6 +10,10 @@ export interface ServiceType {
         "GetNew": {
             req: ReqGetNew,
             res: ResGetNew
+        },
+        "MessageMenu": {
+            req: ReqMessageMenu,
+            res: ResMessageMenu
         },
         "Send": {
             req: ReqSend,
@@ -22,7 +27,7 @@ export interface ServiceType {
 }
 
 export const serviceProto: ServiceProto<ServiceType> = {
-    "version": 3,
+    "version": 4,
     "services": [
         {
             "id": 0,
@@ -37,6 +42,11 @@ export const serviceProto: ServiceProto<ServiceType> = {
         {
             "id": 2,
             "name": "GetNew",
+            "type": "api"
+        },
+        {
+            "id": 4,
+            "name": "MessageMenu",
             "type": "api"
         },
         {
@@ -158,6 +168,13 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "type": {
                         "type": "String"
                     }
+                },
+                {
+                    "id": 1,
+                    "name": "resourcePath",
+                    "type": {
+                        "type": "String"
+                    }
                 }
             ]
         },
@@ -168,10 +185,34 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "id": 0,
                     "name": "data",
                     "type": {
+                        "type": "Reference",
+                        "target": "../../../service/MessageWithPath/RSSPackage"
+                    }
+                }
+            ]
+        },
+        "PtlMessageMenu/ReqMessageMenu": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "userID",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "PtlMessageMenu/ResMessageMenu": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "data",
+                    "type": {
                         "type": "Array",
                         "elementType": {
-                            "type": "Reference",
-                            "target": "../../../service/MessageWithPath/RSSPackage"
+                            "type": "String"
                         }
                     }
                 }
