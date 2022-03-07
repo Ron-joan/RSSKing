@@ -1,75 +1,39 @@
-import 'package:flutter/material.dart';
-import 'package:web_socket_channel/io.dart';
+import 'dart:convert';
 
-class WebSocketRoute extends StatefulWidget {
-  @override
-  _WebSocketRouteState createState() => _WebSocketRouteState();
+import 'package:dio/dio.dart';
+import '../lib/model/base_rpc.dart';
+
+void postRequestFunction2() async {
+  String url = "http://127.0.0.1:3000/MessageMenu";
+
+  ///创建Dio
+  Dio dio = Dio();
+
+  dio.interceptors.add(InterceptorsWrapper(
+      onResponse: (response, handler) {
+        Map<String, dynamic> srcJson = json.decode(response.data);
+        var b = base_rpc.fromJson(srcJson);
+        if (b.isSucc) {
+          response.data = b.res;
+          return handler.next(response);
+        }
+        else{
+          throw "";
+        }
+      },
+      onError: (DioError e, handler) {}));
+
+  ///创建Map 封装参数
+  Map<String, dynamic> map = {};
+
+  map['userID'] = "7831565035913216";
+
+  ///发起post请求
+  Response response = await dio.post(url, data: map);
+
+  var data = response.data;
 }
 
-class _WebSocketRouteState extends State<WebSocketRoute> {
-  TextEditingController _controller = TextEditingController();
-  IOWebSocketChannel channel;
-  String _text = "";
-
-
-  @override
-  void initState() {
-    //创建websocket连接
-    channel = IOWebSocketChannel.connect('ws://echo.websocket.org');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("WebSocket(内容回显)"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Form(
-              child: TextFormField(
-                controller: _controller,
-                decoration: InputDecoration(labelText: 'Send a message'),
-              ),
-            ),
-            StreamBuilder(
-              stream: channel.stream,
-              builder: (context, snapshot) {
-                //网络不通会走到这
-                if (snapshot.hasError) {
-                  _text = "网络不通...";
-                } else if (snapshot.hasData) {
-                  _text = "echo: "+snapshot.data;
-                }
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24.0),
-                  child: Text(_text),
-                );
-              },
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _sendMessage,
-        tooltip: 'Send message',
-        child: Icon(Icons.send),
-      ),
-    );
-  }
-
-  void _sendMessage() {
-    if (_controller.text.isNotEmpty) {
-      channel.sink.add(_controller.text);
-    }
-  }
-
-  @override
-  void dispose() {
-    channel.sink.close();
-    super.dispose();
-  }
+void main() {
+  postRequestFunction2();
 }
