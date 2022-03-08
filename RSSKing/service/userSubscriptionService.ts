@@ -1,7 +1,8 @@
 import { PrismaClient } from '@prisma/client'
+import { getPrisma } from './databaseService';
 
 export const insertUserSubscription = (userSubscription: any) => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     prisma.userSubscription
         .create({
             data: userSubscription
@@ -11,7 +12,7 @@ export const insertUserSubscription = (userSubscription: any) => {
 }
 
 export const insertUserSubscriptionMany = (userSubscriptions: any[]) => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     prisma.userSubscription
         .createMany({
             data: userSubscriptions
@@ -21,7 +22,7 @@ export const insertUserSubscriptionMany = (userSubscriptions: any[]) => {
 }
 
 export const getUserSubscriptionMany = (resourceID: bigint) => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     return prisma.userSubscription
         .findMany({
             where: {

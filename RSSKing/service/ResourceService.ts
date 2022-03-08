@@ -1,9 +1,9 @@
 import { Resource, PrismaClient } from '@prisma/client';
-import { flow } from 'fp-ts/lib/function';
 import { Task } from 'fp-ts/lib/Task';
+import { getPrisma } from './databaseService';
 
 export const createResource = (resource: Resource): Task<void> => async () => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     await prisma.resource.create({
         data: resource
     })
@@ -11,7 +11,7 @@ export const createResource = (resource: Resource): Task<void> => async () => {
 }
 
 export const getAllResource : Task<Resource[]> = async () => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     return prisma.resource.findMany().finally(()=>{
         prisma.$disconnect();
     });

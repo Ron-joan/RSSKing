@@ -14,5 +14,5 @@
   },
   "include": [
     "src"
-, "utility/isArray.ts"  ]
+, "utility/isArray.ts", "utility/log.ts"  ]
 }

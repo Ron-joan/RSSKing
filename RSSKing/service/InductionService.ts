@@ -2,9 +2,10 @@ import { Induction, PrismaClient } from '@prisma/client'
 import { ordering } from 'fp-ts';
 import { flow } from 'fp-ts/lib/function';
 import { IO } from 'fp-ts/lib/IO';
+import { getPrisma } from './databaseService';
 
 export async function insertInduction(induction: Induction) {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     prisma.induction
         .create({
             data: induction
@@ -13,7 +14,7 @@ export async function insertInduction(induction: Induction) {
 }
 
 export const insertManyInduction = async (inductions: Induction[]) => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     return prisma.induction
         .createMany(
             {
@@ -24,7 +25,7 @@ export const insertManyInduction = async (inductions: Induction[]) => {
 }
 
 export async function getSomeResourceLastInduction(resourceID: bigint): Promise<Induction | null> {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     return prisma.induction.findFirst({
         where: {
             resourceID: resourceID

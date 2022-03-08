@@ -1,9 +1,9 @@
 import { PrismaClient } from '@prisma/client'
-import { map } from 'fp-ts/lib/Functor';
+import { getPrisma } from './databaseService';
 
 
 export const insertPushMessageMany = async (pushMessages: any[]) => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     prisma.pushMessage
         .createMany(
             {
@@ -13,7 +13,7 @@ export const insertPushMessageMany = async (pushMessages: any[]) => {
 }
 
 export const getUnreadMessage = async (userID: bigint) => {
-    const prisma = new PrismaClient()
+    const prisma = getPrisma()
     return prisma.pushMessage
         .findMany(
             {

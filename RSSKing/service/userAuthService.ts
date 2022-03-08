@@ -1,7 +1,8 @@
 import { UserAuth, PrismaClient } from '@prisma/client'
+import { getPrisma } from './databaseService';
 
 export const insertUserAuth = (userAuth: any) => {
-    const prisma = new PrismaClient();
+    const prisma = getPrisma();
     prisma.userAuth
         .create({
             data: userAuth
