@@ -6,14 +6,14 @@ part of 'message_menu_parameter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-message_menu_parameter _$message_menu_parameterFromJson(
+MessageMenuParameter _$message_menu_parameterFromJson(
         Map<String, dynamic> json) =>
-    message_menu_parameter(
+    MessageMenuParameter(
       json['userID'] as String,
     );
 
 Map<String, dynamic> _$message_menu_parameterToJson(
-        message_menu_parameter instance) =>
+        MessageMenuParameter instance) =>
     <String, dynamic>{
       'userID': instance.userID,
     };

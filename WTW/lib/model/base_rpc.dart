@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'base_rpc.g.dart';
 
 @JsonSerializable()
-class base_rpc extends Object {
+class BaseRpc extends Object {
   @JsonKey(name: 'isSucc')
   bool isSucc;
 
@@ -13,9 +13,9 @@ class base_rpc extends Object {
   @JsonKey(name: 'res')
   Map<String, dynamic>? res;
 
-  base_rpc(this.isSucc, this.err, this.res);
+  BaseRpc(this.isSucc, this.err, this.res);
 
-  factory base_rpc.fromJson(Map<String, dynamic> srcJson) =>
+  factory BaseRpc.fromJson(Map<String, dynamic> srcJson) =>
       _$base_rpcFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$base_rpcToJson(this);

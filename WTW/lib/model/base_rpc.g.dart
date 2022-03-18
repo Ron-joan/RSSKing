@@ -6,7 +6,7 @@ part of 'base_rpc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-base_rpc _$base_rpcFromJson(Map<String, dynamic> json) => base_rpc(
+BaseRpc _$base_rpcFromJson(Map<String, dynamic> json) => BaseRpc(
       json['isSucc'] as bool,
       json['err'] == null
           ? null
@@ -14,7 +14,7 @@ base_rpc _$base_rpcFromJson(Map<String, dynamic> json) => base_rpc(
       json['res'] as Map<String, dynamic>?,
     );
 
-Map<String, dynamic> _$base_rpcToJson(base_rpc instance) => <String, dynamic>{
+Map<String, dynamic> _$base_rpcToJson(BaseRpc instance) => <String, dynamic>{
       'isSucc': instance.isSucc,
       'err': instance.err,
       'res': instance.res,

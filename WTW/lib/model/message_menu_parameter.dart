@@ -4,14 +4,14 @@ part 'message_menu_parameter.g.dart';
 
 
 @JsonSerializable()
-class message_menu_parameter extends Object {
+class MessageMenuParameter extends Object {
 
   @JsonKey(name: 'userID')
   String userID;
 
-  message_menu_parameter(this.userID);
+  MessageMenuParameter(this.userID);
 
-  factory message_menu_parameter.fromJson(Map<String, dynamic> srcJson) => _$message_menu_parameterFromJson(srcJson);
+  factory MessageMenuParameter.fromJson(Map<String, dynamic> srcJson) => _$message_menu_parameterFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$message_menu_parameterToJson(this);
 

@@ -4,6 +4,6 @@ export function isNonEmptyArray<T>(array: NonEmptyArray<T> | undefined): array i
     return (<NonEmptyArray<T>>array).length !== undefined;
 }
 
-export function isArray<T>(array: T[] | undefined): array is T[] {
+export function isArray<T>(array: T[] | void): array is T[] {
     return (<T[]>array).length !== undefined;
 }

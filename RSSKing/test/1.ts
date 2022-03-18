@@ -22,13 +22,19 @@ const logResource = pipe(
     map(A.map(getRSS)),
 )
 
+getRSS({
+    resourceID:BigInt(1),
+    resourcePath:"/bilibili/video/reply/BV1MY41137sS",
+    resourceType:1
+})
+
 //insertUserSubscriptionMany(a)
 
 // getSomeResourceLastInduction(BigInt(4406258455027712)).then((i) => {
 //     console.log(i?.createtime);
 // });
 //insertPushMessageMany([{ userID: BigInt(13), inductionID: BigInt(15) }])
-logResource();
+//logResource();
 // RSSHub.request("/ui-cn/article")
 // .then((data: any) => {
 //     console.log(data);

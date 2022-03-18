@@ -4,14 +4,14 @@ part 'message_menu.g.dart';
 
 
 @JsonSerializable()
-class message_menu extends Object {
+class MessageMenu extends Object {
 
   @JsonKey(name: 'data')
   List<String> data;
 
-  message_menu(this.data,);
+  MessageMenu(this.data,);
 
-  factory message_menu.fromJson(Map<String, dynamic> srcJson) => _$message_menuFromJson(srcJson);
+  factory MessageMenu.fromJson(Map<String, dynamic> srcJson) => _$message_menuFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$message_menuToJson(this);
 

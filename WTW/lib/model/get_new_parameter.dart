@@ -4,7 +4,7 @@ part 'get_new_parameter.g.dart';
 
 
 @JsonSerializable()
-class get_new_parameter extends Object {
+class GetNewParameter extends Object {
 
   @JsonKey(name: 'userID')
   String userID;
@@ -12,9 +12,9 @@ class get_new_parameter extends Object {
   @JsonKey(name: 'resourcePath')
   String resourcePath;
 
-  get_new_parameter(this.userID,this.resourcePath,);
+  GetNewParameter(this.userID,this.resourcePath,);
 
-  factory get_new_parameter.fromJson(Map<String, dynamic> srcJson) => _$get_new_parameterFromJson(srcJson);
+  factory GetNewParameter.fromJson(Map<String, dynamic> srcJson) => _$get_new_parameterFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$get_new_parameterToJson(this);
 
