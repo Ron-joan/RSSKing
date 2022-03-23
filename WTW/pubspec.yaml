@@ -29,6 +29,7 @@ environment:
 dependencies:
   json_annotation: ">=2.0.0"
   dio: ">=3.0.9"
+  fish_redux:
   flutter:
     sdk: flutter
 

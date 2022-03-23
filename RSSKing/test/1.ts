@@ -2,7 +2,7 @@
 import { getNowBigInt, getOneSnowFlake, SnowFlakeType } from '../utility/SnowFlake'
 import { createResource, getAllResource } from "../service/ResourceService"
 import { getRSS } from "../RSS/Spider"
-import { chain, chainIOK, Task, map } from 'fp-ts/lib/Task';
+import { map } from 'fp-ts/lib/Task';
 import { IO } from 'fp-ts/lib/IO';
 import * as A from 'fp-ts/Array'
 import { flow, pipe } from 'fp-ts/lib/function';
@@ -22,11 +22,7 @@ const logResource = pipe(
     map(A.map(getRSS)),
 )
 
-getRSS({
-    resourceID:BigInt(1),
-    resourcePath:"/bilibili/video/reply/BV1MY41137sS",
-    resourceType:1
-})
+
 
 //insertUserSubscriptionMany(a)
 
@@ -34,7 +30,7 @@ getRSS({
 //     console.log(i?.createtime);
 // });
 //insertPushMessageMany([{ userID: BigInt(13), inductionID: BigInt(15) }])
-//logResource();
+logResource();
 // RSSHub.request("/ui-cn/article")
 // .then((data: any) => {
 //     console.log(data);

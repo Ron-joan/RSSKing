@@ -3,6 +3,8 @@ import * as path from "path";
 import { HttpServer, WsServer } from "tsrpc";
 import { serviceProto } from './shared/protocols/serviceProto';
 import { getNowBigInt, getOneSnowFlake } from '../utility/SnowFlake';
+import { logResource} from '../RSS/Spider'
+const schedule = require('node-schedule');
 require('../utility/patch.js')
 
 // Create the Server
@@ -18,6 +20,16 @@ async function init() {
 
     // TODO
     // Prepare something... (e.g. connect the db)
+
+
+    // 定义规则
+    let rule = new schedule.RecurrenceRule();
+    rule.minute = 30;
+    rule.second = 0;
+
+    // 启动任务
+    let job = schedule.scheduleJob(rule, logResource);
+
 };
 
 // Entry function

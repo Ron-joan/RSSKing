@@ -10,6 +10,7 @@
 ## 目录
 
 - [GetNew](#/GetNew)
+- [MessageMenu](#/MessageMenu)
 - [Send](#/Send)
 
 ---
@@ -22,7 +23,8 @@
 **请求**
 ```ts
 interface ReqGetNew {
-    userID: string
+    userID: string,
+    resourcePath: string
 }
 ```
 
@@ -40,6 +42,27 @@ interface ResGetNew {
             inductionID: /*bigint*/ number
         }[]
     }
+}
+```
+
+---
+
+## MessageMenu <a id="/MessageMenu"></a>
+
+**路径**
+- POST `/MessageMenu`
+
+**请求**
+```ts
+interface ReqMessageMenu {
+    userID: string
+}
+```
+
+**响应**
+```ts
+interface ResMessageMenu {
+    data: string[]
 }
 ```
 

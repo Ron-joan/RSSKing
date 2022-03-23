@@ -49,6 +49,50 @@
         }
       }
     },
+    "/MessageMenu": {
+      "post": {
+        "operationId": "MessageMenu",
+        "requestBody": {
+          "description": "Req<MessageMenu>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlMessageMenu_ReqMessageMenu"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResMessageMenu>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlMessageMenu_ResMessageMenu"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Send": {
       "post": {
         "operationId": "Send",
@@ -112,26 +156,15 @@
           "time"
         ]
       },
-      "PtlGetNew_ReqGetNew": {
-        "type": "object",
-        "properties": {
-          "userID": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "userID"
-        ]
-      },
-      "PtlGetNew_ResGetNew": {
-        "type": "object",
-        "properties": {
-          "data": {
+      "MsgNew_MsgNew": {
+        "allOf": [
+          {
             "$ref": "#/components/schemas/_________service_MessageWithPath_RSSPackage"
+          },
+          {
+            "type": "object",
+            "properties": {}
           }
-        },
-        "required": [
-          "data"
         ]
       },
       "_________service_MessageWithPath_RSSPackage": {
@@ -182,6 +215,57 @@
           "createtime",
           "url",
           "inductionID"
+        ]
+      },
+      "PtlGetNew_ReqGetNew": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          },
+          "resourcePath": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "resourcePath"
+        ]
+      },
+      "PtlGetNew_ResGetNew": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/_________service_MessageWithPath_RSSPackage"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "PtlMessageMenu_ReqMessageMenu": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID"
+        ]
+      },
+      "PtlMessageMenu_ResMessageMenu": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "data"
         ]
       },
       "PtlSend_ReqSend": {

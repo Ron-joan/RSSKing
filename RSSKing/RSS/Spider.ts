@@ -1,17 +1,14 @@
 import { PushMessage, Resource, UserSubscription } from '@prisma/client';
 import { filter, map, mapWithIndex } from 'fp-ts/Array'
-import { pipe } from 'fp-ts/function'
+import * as T from 'fp-ts/lib/Task';
+import { pipe } from 'fp-ts/lib/function';
 const RSSHub = require('rsshub');
-
-
-import { flow } from 'fp-ts/lib/function';
-import { IO } from 'fp-ts/lib/IO';
-import { Task } from 'fp-ts/lib/Task';
 import { Rssml, Item } from './type';
 import { Either } from 'fp-ts/Either'
 import { Induction } from '@prisma/client'
 import { getSomeResourceLastInduction, insertInduction, insertManyInduction } from '../service/InductionService'
 import { flatten, forEach, reject } from 'ramda';
+import { getAllResource } from "../service/ResourceService"
 import { date } from 'fp-ts';
 import { getManySnowFlake, getAtSameTimeSnowFlake } from "../utility/SnowFlake"
 import { title } from 'process';
@@ -24,6 +21,9 @@ RSSHub.init({
     // config
 });
 
+
+
+
 export const getRSS = (resource: Resource): void => {
     RSSHub.request(resource.resourcePath)
         .then(async (data: Rssml) => {
@@ -35,7 +35,10 @@ export const getRSS = (resource: Resource): void => {
         });
 }
 
-
+export const logResource = pipe(
+    getAllResource,
+    T.map(map(getRSS)),
+)
 
 const isUnread = (lastInduction: Induction | null, data: Rssml): boolean => {
     if (lastInduction != null) {
