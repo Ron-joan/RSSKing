@@ -25,6 +25,7 @@ async function init() {
 
     // 定义规则
     let rule = new schedule.RecurrenceRule();
+    rule.hour = [6,8,10,12,15,18,19,21,23];
     rule.minute = 49;
     rule.second = 41;
 
