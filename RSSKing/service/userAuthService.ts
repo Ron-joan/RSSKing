@@ -11,6 +11,19 @@ export const insertUserAuth = (userAuth: any) => {
         .finally(() => prisma.$disconnect())
 }
 
+export const readUserAuth = async (identifier:string)=>{
+    const prisma = getPrisma();
+    const user = await prisma.userAuth
+                        .findFirst({
+                            where:{identifier:identifier},
+                            include:{
+                                User:true
+                            }
+                        })
+                        .catch(e => console.log(e))
+                        .finally(() => prisma.$disconnect())
+    return user
+}
 
 export enum identityType {
     Local,

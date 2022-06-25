@@ -2,14 +2,20 @@ import { ServiceProto } from 'tsrpc-proto';
 import { MsgChat } from './MsgChat';
 import { MsgNew } from './MsgNew';
 import { ReqGetNew, ResGetNew } from './PtlGetNew';
+import { ReqLogin, ResLogin } from './PtlLogin';
 import { ReqMessageMenu, ResMessageMenu } from './PtlMessageMenu';
 import { ReqSend, ResSend } from './PtlSend';
+import { ReqSignIn, ResSignIn } from './PtlSignIn';
 
 export interface ServiceType {
     api: {
         "GetNew": {
             req: ReqGetNew,
             res: ResGetNew
+        },
+        "Login": {
+            req: ReqLogin,
+            res: ResLogin
         },
         "MessageMenu": {
             req: ReqMessageMenu,
@@ -18,6 +24,10 @@ export interface ServiceType {
         "Send": {
             req: ReqSend,
             res: ResSend
+        },
+        "SignIn": {
+            req: ReqSignIn,
+            res: ResSignIn
         }
     },
     msg: {
@@ -27,7 +37,7 @@ export interface ServiceType {
 }
 
 export const serviceProto: ServiceProto<ServiceType> = {
-    "version": 4,
+    "version": 5,
     "services": [
         {
             "id": 0,
@@ -45,6 +55,11 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "api"
         },
         {
+            "id": 5,
+            "name": "Login",
+            "type": "api"
+        },
+        {
             "id": 4,
             "name": "MessageMenu",
             "type": "api"
@@ -52,6 +67,11 @@ export const serviceProto: ServiceProto<ServiceType> = {
         {
             "id": 1,
             "name": "Send",
+            "type": "api"
+        },
+        {
+            "id": 6,
+            "name": "SignIn",
             "type": "api"
         }
     ],
@@ -191,6 +211,59 @@ export const serviceProto: ServiceProto<ServiceType> = {
                 }
             ]
         },
+        "PtlLogin/ReqLogin": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "identifier",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "credential",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "PtlLogin/ResLogin": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "userID",
+                    "type": {
+                        "type": "Number",
+                        "scalarType": "bigint"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "nickName",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "userType",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "code",
+                    "type": {
+                        "type": "Number"
+                    }
+                }
+            ]
+        },
         "PtlMessageMenu/ReqMessageMenu": {
             "type": "Interface",
             "properties": [
@@ -238,6 +311,44 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "name": "time",
                     "type": {
                         "type": "Date"
+                    }
+                }
+            ]
+        },
+        "PtlSignIn/ReqSignIn": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "nickName",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "credential",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "PtlSignIn/ResSignIn": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "identifier",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "code",
+                    "type": {
+                        "type": "Number"
                     }
                 }
             ]

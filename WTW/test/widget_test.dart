@@ -6,7 +6,7 @@ import '../lib/model/base_rpc.dart';
 import '../lib/model/message_menu_parameter.dart' as m;
 
 void postRequestFunction2() async {
-  String url = "http://127.0.0.1:3000/MessageMenu";
+  String url = "http://82.157.62.48:3000/MessageMenu";
 
   ///创建Dio
   Dio dio = Dio();
@@ -36,6 +36,8 @@ void postRequestFunction2() async {
   Response response = await dio.post(url, data: map);
 
   var data = response.data;
+
+
 }
 
 

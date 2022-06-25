@@ -3,7 +3,13 @@ import curry from "fnts/curry";
 import { IO } from 'fp-ts/lib/IO';
 import { number } from 'fp-ts';
 
-const now: IO<number> = () => new Date().getTime();
+let cursor = 1;
+  
+export const now: IO<number> = () => {
+    cursor++;
+    cursor = cursor % 100;
+    return new Date().getTime() + cursor;
+}
 
 const movesToRight = curry(function (digits: number, x: bigint): bigint {
     return x << BigInt(digits);
@@ -29,9 +35,11 @@ export const getAtSameTimeSnowFlake = (type: number) => {
 
 export const getNowBigInt = flow(now, BigInt);
 
-const getOneSnowFlakeHead = flow(getNowBigInt, subtraction(BigInt(1644063714710)), movesToRight(22));
+export const getOneSnowFlakeHead = flow(getNowBigInt, subtraction(BigInt(1644063714710)), movesToRight(22));
 
-export const getOneSnowFlake = flow(BigInt, movesToRight(12), addBigInt(getOneSnowFlakeHead()));
+export const getOneSnowFlake =(type:number)=>{
+    return pipe(type,BigInt, movesToRight(12), addBigInt(getOneSnowFlakeHead()));
+} 
 
 
 export enum SnowFlakeType {

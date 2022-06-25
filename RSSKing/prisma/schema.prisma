@@ -32,6 +32,7 @@ model Resource {
 model User {
   ID               BigInt             @id
   nickName         String             @db.VarChar(16)
+  userType         Int
   PushMessage      PushMessage[]
   UserAuth         UserAuth[]
   UserSubscription UserSubscription[]

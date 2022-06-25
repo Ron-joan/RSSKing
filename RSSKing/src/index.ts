@@ -2,14 +2,15 @@ import { Console } from "console";
 import * as path from "path";
 import { HttpServer, WsServer } from "tsrpc";
 import { serviceProto } from './shared/protocols/serviceProto';
-import { getNowBigInt, getOneSnowFlake } from '../utility/SnowFlake';
+import { getNowBigInt, getOneSnowFlake, SnowFlakeType } from '../utility/SnowFlake';
 import { logResource} from '../RSS/Spider'
+import {test} from '../test/1'
 const schedule = require('node-schedule');
 require('../utility/patch.js')
 
 // Create the Server
 export const server = new HttpServer(serviceProto, {
-    port: 3000,
+    port: 4000,
     // Remove this to use binary mode (remove from the client too)
     json: true
 });
@@ -24,12 +25,12 @@ async function init() {
 
     // 定义规则
     let rule = new schedule.RecurrenceRule();
-    rule.minute = 30;
-    rule.second = 0;
+    rule.minute = 49;
+    rule.second = 41;
 
     // 启动任务
     let job = schedule.scheduleJob(rule, logResource);
-
+    setTimeout(logResource, 25000);
 };
 
 // Entry function

@@ -13,7 +13,6 @@ export async function ApiGetNew(call: ApiCall<ReqGetNew, ResGetNew>) {
     try {
         const { userID, resourcePath } = call.req;
         const record = getOneFromCache(userID, resourcePath);
-        log(record)
         if (isNonEmptyArray(record)) {
             const temp: RSSPackage = {
                 resourcePath: record[0].Resource.resourcePath,
