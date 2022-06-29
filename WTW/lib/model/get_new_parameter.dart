@@ -14,9 +14,9 @@ class GetNewParameter extends Object {
 
   GetNewParameter(this.userID,this.resourcePath,);
 
-  factory GetNewParameter.fromJson(Map<String, dynamic> srcJson) => _$get_new_parameterFromJson(srcJson);
+  factory GetNewParameter.fromJson(Map<String, dynamic> srcJson) => _$GetNewParameterFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$get_new_parameterToJson(this);
+  Map<String, dynamic> toJson() => _$GetNewParameterToJson(this);
 
 }
 

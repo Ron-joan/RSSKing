@@ -11,9 +11,9 @@ class MessageMenuParameter extends Object {
 
   MessageMenuParameter(this.userID);
 
-  factory MessageMenuParameter.fromJson(Map<String, dynamic> srcJson) => _$message_menu_parameterFromJson(srcJson);
+  factory MessageMenuParameter.fromJson(Map<String, dynamic> srcJson) => _$MessageMenuParameterFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$message_menu_parameterToJson(this);
+  Map<String, dynamic> toJson() => _$MessageMenuParameterToJson(this);
 
 }
 

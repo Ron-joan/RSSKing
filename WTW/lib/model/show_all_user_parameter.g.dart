@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_new_parameter.dart';
+part of 'show_all_user_parameter.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetNewParameter _$GetNewParameterFromJson(Map<String, dynamic> json) =>
-    GetNewParameter(
+show_all_user_parameter _$show_all_user_parameterFromJson(
+        Map<String, dynamic> json) =>
+    show_all_user_parameter(
       json['userID'] as String,
-      json['resourcePath'] as String,
     );
 
-Map<String, dynamic> _$GetNewParameterToJson(GetNewParameter instance) =>
+Map<String, dynamic> _$show_all_user_parameterToJson(
+        show_all_user_parameter instance) =>
     <String, dynamic>{
       'userID': instance.userID,
-      'resourcePath': instance.resourcePath,
     };

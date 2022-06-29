@@ -1,19 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'message_menu_parameter.dart';
+part of 'delete_resource_parameter.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MessageMenuParameter _$MessageMenuParameterFromJson(
+delete_resource_parameter _$delete_resource_parameterFromJson(
         Map<String, dynamic> json) =>
-    MessageMenuParameter(
+    delete_resource_parameter(
       json['userID'] as String,
+      json['targetResourceID'] as String,
     );
 
-Map<String, dynamic> _$MessageMenuParameterToJson(
-        MessageMenuParameter instance) =>
+Map<String, dynamic> _$delete_resource_parameterToJson(
+        delete_resource_parameter instance) =>
     <String, dynamic>{
       'userID': instance.userID,
+      'targetResourceID': instance.targetResourceID,
     };

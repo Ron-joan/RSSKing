@@ -11,8 +11,8 @@ class MessageMenu extends Object {
 
   MessageMenu(this.data,);
 
-  factory MessageMenu.fromJson(Map<String, dynamic> srcJson) => _$message_menuFromJson(srcJson);
+  factory MessageMenu.fromJson(Map<String, dynamic> srcJson) => _$MessageMenuFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$message_menuToJson(this);
+  Map<String, dynamic> toJson() => _$MessageMenuToJson(this);
 
 }

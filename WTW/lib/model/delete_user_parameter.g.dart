@@ -1,19 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'message_menu_parameter.dart';
+part of 'delete_user_parameter.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MessageMenuParameter _$MessageMenuParameterFromJson(
+delete_user_parameter _$delete_user_parameterFromJson(
         Map<String, dynamic> json) =>
-    MessageMenuParameter(
+    delete_user_parameter(
       json['userID'] as String,
+      json['targetUserID'] as String,
     );
 
-Map<String, dynamic> _$MessageMenuParameterToJson(
-        MessageMenuParameter instance) =>
+Map<String, dynamic> _$delete_user_parameterToJson(
+        delete_user_parameter instance) =>
     <String, dynamic>{
       'userID': instance.userID,
+      'targetUserID': instance.targetUserID,
     };

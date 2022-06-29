@@ -6,11 +6,11 @@ part of 'message_menu.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MessageMenu _$message_menuFromJson(Map<String, dynamic> json) => MessageMenu(
+MessageMenu _$MessageMenuFromJson(Map<String, dynamic> json) => MessageMenu(
       (json['data'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$message_menuToJson(MessageMenu instance) =>
+Map<String, dynamic> _$MessageMenuToJson(MessageMenu instance) =>
     <String, dynamic>{
       'data': instance.data,
     };

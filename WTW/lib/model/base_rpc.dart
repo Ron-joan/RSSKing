@@ -16,9 +16,9 @@ class BaseRpc extends Object {
   BaseRpc(this.isSucc, this.err, this.res);
 
   factory BaseRpc.fromJson(Map<String, dynamic> srcJson) =>
-      _$base_rpcFromJson(srcJson);
+      _$BaseRpcFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$base_rpcToJson(this);
+  Map<String, dynamic> toJson() => _$BaseRpcToJson(this);
 }
 
 @JsonSerializable()
