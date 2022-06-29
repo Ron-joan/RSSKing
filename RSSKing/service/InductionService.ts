@@ -37,8 +37,13 @@ export async function getSomeResourceLastInduction(resourceID: bigint): Promise<
     }).finally(() => prisma.$disconnect());
 }
 
-function autoGetSnowFlakeID(induction: Induction) {
 
+
+export const getKeyWordInduction =  async	(userID: bigint,keyword:string)=>{
+    // const prisma = getPrisma();
+    // const w = await prisma.$queryRaw
+    //                     "SELECT  A1,A2,C1,C2      FROM  B     INNER JOIN User ON User.A1 = B.B1INNER JOIN C ON C.C1 = B.B1where    xxxxx  "
+    
 }
 
 

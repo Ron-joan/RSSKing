@@ -21,6 +21,21 @@ export const insertUserSubscriptionMany = (userSubscriptions: any[]) => {
         .finally(() => prisma.$disconnect())
 }
 
+export const deleteUserSubscription = async (userID: bigint, resourceID: bigint) => {
+    const prisma = getPrisma();
+    const item = await prisma.userSubscription.findFirst({
+        where: {
+            userID,
+            resourceID
+        }
+    })
+    prisma.userSubscription.delete({
+        where: {
+            ID: item?.ID
+        }
+    }).finally(() => prisma.$disconnect())
+}
+
 export const getUserSubscriptionMany = (resourceID: bigint) => {
     const prisma = getPrisma();
     return prisma.userSubscription

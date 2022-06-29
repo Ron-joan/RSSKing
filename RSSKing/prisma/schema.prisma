@@ -44,7 +44,7 @@ model UserAuth {
   identifier   String @db.VarChar(255)
   credential   String @db.VarChar(255)
   ID           Int    @id @default(autoincrement())
-  User         User   @relation(fields: [userID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "UserAuth_ibfk_1")
+  User         User   @relation(fields: [userID], references: [ID], onDelete: Cascade, onUpdate: Cascade, map: "UserAuth_ibfk_1")
 
   @@index([userID], map: "userID")
 }
@@ -53,8 +53,8 @@ model UserSubscription {
   userID     BigInt
   resourceID BigInt
   ID         Int      @id @default(autoincrement())
-  Resource   Resource @relation(fields: [resourceID], references: [resourceID], onDelete: NoAction, onUpdate: NoAction, map: "UserSubscription_ibfk_2")
-  User       User     @relation(fields: [userID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "UserSubscription_ibfk_1")
+  Resource   Resource @relation(fields: [resourceID], references: [resourceID], onDelete: Cascade, onUpdate: Cascade, map: "UserSubscription_ibfk_2")
+  User       User     @relation(fields: [userID], references: [ID], onDelete: Cascade, onUpdate: Cascade, map: "UserSubscription_ibfk_1")
 
   @@index([resourceID], map: "resourceID")
   @@index([userID], map: "userID")
@@ -65,9 +65,9 @@ model PushMessage {
   inductionID BigInt
   id          Int       @id @default(autoincrement())
   resourceID  BigInt
-  Induction   Induction @relation(fields: [inductionID], references: [inductionID], onDelete: NoAction, onUpdate: NoAction, map: "PushMessage_ibfk_2")
-  Resource    Resource  @relation(fields: [resourceID], references: [resourceID], onDelete: NoAction, onUpdate: NoAction, map: "PushMessage_ibfk_3")
-  User        User      @relation(fields: [userID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "PushMessage_ibfk_1")
+  Induction   Induction @relation(fields: [inductionID], references: [inductionID], onDelete: Cascade, onUpdate: NoAction, map: "PushMessage_ibfk_2")
+  Resource    Resource  @relation(fields: [resourceID], references: [resourceID], onDelete: Cascade, onUpdate: NoAction, map: "PushMessage_ibfk_3")
+  User        User      @relation(fields: [userID], references: [ID], onDelete: Cascade, onUpdate: Cascade, map: "PushMessage_ibfk_1")
 
   @@index([inductionID], map: "inductionID")
   @@index([resourceID], map: "resourceID")

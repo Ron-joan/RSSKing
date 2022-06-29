@@ -5,6 +5,138 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/DeleteResource": {
+      "post": {
+        "operationId": "DeleteResource",
+        "requestBody": {
+          "description": "Req<DeleteResource>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlDeleteResource_ReqDeleteResource"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResDeleteResource>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlDeleteResource_ResDeleteResource"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/DeleteUser": {
+      "post": {
+        "operationId": "DeleteUser",
+        "requestBody": {
+          "description": "Req<DeleteUser>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlDeleteUser_ReqDeleteUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResDeleteUser>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlDeleteUser_ResDeleteUser"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Dissubscribe": {
+      "post": {
+        "operationId": "Dissubscribe",
+        "requestBody": {
+          "description": "Req<Dissubscribe>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlDissubscribe_ReqDissubscribe"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResDissubscribe>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlDissubscribe_ResDissubscribe"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/GetNew": {
       "post": {
         "operationId": "GetNew",
@@ -36,6 +168,50 @@
                     },
                     "res": {
                       "$ref": "#/components/schemas/PtlGetNew_ResGetNew"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Login": {
+      "post": {
+        "operationId": "Login",
+        "requestBody": {
+          "description": "Req<Login>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlLogin_ReqLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResLogin>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlLogin_ResLogin"
                     }
                   }
                 }
@@ -136,6 +312,182 @@
           }
         }
       }
+    },
+    "/ShowAllResource": {
+      "post": {
+        "operationId": "ShowAllResource",
+        "requestBody": {
+          "description": "Req<ShowAllResource>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlShowAllResource_ReqShowAllResource"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResShowAllResource>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlShowAllResource_ResShowAllResource"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ShowAllUser": {
+      "post": {
+        "operationId": "ShowAllUser",
+        "requestBody": {
+          "description": "Req<ShowAllUser>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlShowAllUser_ReqShowAllUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResShowAllUser>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlShowAllUser_ResShowAllUser"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SignIn": {
+      "post": {
+        "operationId": "SignIn",
+        "requestBody": {
+          "description": "Req<SignIn>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlSignIn_ReqSignIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResSignIn>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlSignIn_ResSignIn"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Subscribe": {
+      "post": {
+        "operationId": "Subscribe",
+        "requestBody": {
+          "description": "Req<Subscribe>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlSubscribe_ReqSubscribe"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResSubscribe>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlSubscribe_ResSubscribe"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -217,6 +569,63 @@
           "inductionID"
         ]
       },
+      "PtlDeleteResource_ReqDeleteResource": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          },
+          "targetResourceID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "targetResourceID"
+        ]
+      },
+      "PtlDeleteResource_ResDeleteResource": {
+        "type": "object",
+        "properties": {}
+      },
+      "PtlDeleteUser_ReqDeleteUser": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          },
+          "targetUserID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "targetUserID"
+        ]
+      },
+      "PtlDeleteUser_ResDeleteUser": {
+        "type": "object",
+        "properties": {}
+      },
+      "PtlDissubscribe_ReqDissubscribe": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          },
+          "resourcePath": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "resourcePath"
+        ]
+      },
+      "PtlDissubscribe_ResDissubscribe": {
+        "type": "object",
+        "properties": {}
+      },
       "PtlGetNew_ReqGetNew": {
         "type": "object",
         "properties": {
@@ -241,6 +650,44 @@
         },
         "required": [
           "data"
+        ]
+      },
+      "PtlLogin_ReqLogin": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "string"
+          },
+          "credential": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "identifier",
+          "credential"
+        ]
+      },
+      "PtlLogin_ResLogin": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "integer"
+          },
+          "nickName": {
+            "type": "string"
+          },
+          "userType": {
+            "type": "number"
+          },
+          "code": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "userID",
+          "nickName",
+          "userType",
+          "code"
         ]
       },
       "PtlMessageMenu_ReqMessageMenu": {
@@ -290,6 +737,135 @@
         "required": [
           "time"
         ]
+      },
+      "PtlShowAllResource_ReqShowAllResource": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID"
+        ]
+      },
+      "PtlShowAllResource_ResShowAllResource": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PtlShowAllResource_Resource"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "PtlShowAllResource_Resource": {
+        "type": "object",
+        "properties": {
+          "resourceID": {
+            "type": "integer"
+          },
+          "resourcePath": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "resourceID",
+          "resourcePath"
+        ]
+      },
+      "PtlShowAllUser_ReqShowAllUser": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID"
+        ]
+      },
+      "PtlShowAllUser_ResShowAllUser": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PtlShowAllUser_User"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "PtlShowAllUser_User": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "integer"
+          },
+          "nickName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "nickName"
+        ]
+      },
+      "PtlSignIn_ReqSignIn": {
+        "type": "object",
+        "properties": {
+          "nickName": {
+            "type": "string"
+          },
+          "credential": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nickName",
+          "credential"
+        ]
+      },
+      "PtlSignIn_ResSignIn": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "string"
+          },
+          "code": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "identifier",
+          "code"
+        ]
+      },
+      "PtlSubscribe_ReqSubscribe": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          },
+          "resourcePath": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "resourcePath"
+        ]
+      },
+      "PtlSubscribe_ResSubscribe": {
+        "type": "object",
+        "properties": {}
       },
       "?bson_ObjectID": {
         "type": "string"
